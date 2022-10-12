@@ -1,0 +1,73 @@
+﻿<Window x:Class="DataBase_MVVM_Test.CRUDWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Backend.ViewModels;assembly=Backend"
+        d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+        mc:Ignorable="d"
+        Title="CRUDWindow"
+        SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="MinWidth" Value="60"/>
+        </Style>
+    </Window.Resources>
+
+    <!--#region Parent Grid-->
+    <Grid>
+        <!--#region Parent Grid: Definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Grid Content: CRUDTable (DataGrid)-->
+        <DataGrid Grid.Row="0" Grid.Column="1"
+                  ItemsSource="{Binding Path=CrudTable.CrudTable, Mode=TwoWay}"
+                  MaxColumnWidth="800"
+                  MaxHeight="800"
+                  TabIndex="1"/>
+        <!--#endregion-->
+        
+        <!--#region Child Grid: Buttons-->
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0"
+                    Content="Update"
+                    Command="{Binding CrudTable.UpdateSourceTableCommand}"
+                    CommandParameter="{Binding CurrentConnection}"
+                    TabIndex="2"/>
+
+            <Button Grid.Row="0" Grid.Column="1" 
+                    Content="Close"
+                    Click="OnClick_Close"
+                    TabIndex="3456789"/>
+        </Grid>
+        <!--#endregion-->
+    </Grid>
+    <!--#endregion-->
+</Window>
