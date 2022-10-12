@@ -1,5 +1,6 @@
 # What is this?
 This is my attempt at creating an application in WPF, that utilises the MVVM design pattern to allow CRUD operations on a MySql database table.
+The project utilises Microsoft's Community MVVM Toolkit, to avoid immense amounts of boilerplate code.
 
 ## Why is this?
 I am at a high enough skill level (not too great, but good enough!) where I am now comfortable to publish bits and bobs of code I create, for the purpose of showcasing my developing skillset.
